@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-canvas: 250 249 246;
+    --color-surface: 243 241 236;
+    --color-surface-elevated: 255 255 255;
+    --color-surface-hover: 235 232 225;
+    --color-border: 229 225 218;
+    --color-border-strong: 209 204 196;
+    --color-ink-primary: 28 27 25;
+    --color-ink-secondary: 87 83 78;
+    --color-ink-muted: 138 132 124;
+    --color-accent: 201 100 66;
+    --color-accent-hover: 181 86 54;
+  }
+
+  /* Dark neon theme */
+  .dark {
+    --color-canvas: 8 9 18;
+    --color-surface: 13 15 28;
+    --color-surface-elevated: 19 22 40;
+    --color-surface-hover: 28 32 58;
+    --color-border: 36 40 74;
+    --color-border-strong: 62 68 120;
+    --color-ink-primary: 236 240 255;
+    --color-ink-secondary: 170 180 215;
+    --color-ink-muted: 115 124 165;
+    --color-accent: 34 211 238;
+    --color-accent-hover: 103 232 249;
+    --neon-purple: 168 85 247;
+  }
+
+  .dark body {
+    background:
+      radial-gradient(900px 500px at 0% 0%, rgb(var(--neon-purple) / 0.10), transparent 60%),
+      radial-gradient(800px 500px at 100% 100%, rgb(var(--color-accent) / 0.08), transparent 60%),
+      rgb(var(--color-canvas));
+    background-attachment: fixed;
+  }
+
+  .dark ::selection {
+    background: rgb(var(--color-accent) / 0.35);
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    background-color: rgb(var(--color-canvas));
+    color: rgb(var(--color-ink-primary));
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+/* Subtle custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-border-strong));
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(rgb(var(--color-accent) / 0.6), rgb(var(--neon-purple) / 0.6));
+}
+
+/* Neon glow on accent buttons/badges and focused inputs */
+.dark .bg-accent {
+  color: rgb(6 8 20) !important;
+  box-shadow: 0 0 14px rgb(var(--color-accent) / 0.45), 0 0 2px rgb(var(--color-accent) / 0.8);
+}
+.dark .bg-accent:hover {
+  box-shadow: 0 0 22px rgb(var(--color-accent) / 0.6), 0 0 4px rgb(var(--color-accent));
+}
+.dark .text-accent {
+  text-shadow: 0 0 10px rgb(var(--color-accent) / 0.5);
+}
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: rgb(var(--color-accent) / 0.8) !important;
+  box-shadow: 0 0 0 1px rgb(var(--color-accent) / 0.5), 0 0 16px rgb(var(--color-accent) / 0.25) !important;
+  outline: none;
+}
+.dark .bg-surface-elevated {
+  border-color: rgb(var(--color-border));
+}
+.dark .shadow-composer-dark {
+  box-shadow: 0 0 0 1px rgb(var(--color-accent) / 0.25), 0 0 28px rgb(var(--neon-purple) / 0.18), 0 6px 24px rgb(0 0 0 / 0.5);
+}
+.dark button,
+.dark a {
+  transition: background-color .15s, color .15s, box-shadow .2s, border-color .15s;
+}
